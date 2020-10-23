@@ -130,7 +130,7 @@ The host is assumed to be local.
     $ docker-compose -f docker-compose.development.yml restart
     ```
 
-   Destroy containers, images, containers, volumes, and networks.
+   Destroy images, containers, volumes, and networks.
     ```bash
     $ docker-compose -f docker-compose.development.yml down
     ```
