@@ -114,6 +114,27 @@ The host is assumed to be local.
    |Front-end file upload screen|http://localhost:1337/uploads/||
    |Admin login|http://localhost:1337/admin/login/|Enter the registered administrator's information.|
 
+5. Supplement  
+   Stop the container and suspend development.
+    ```bash
+    $ docker-compose -f docker-compose.development.yml stop
+    ```
+
+   Start the container and resume development.
+    ```bash
+    $ docker-compose -f docker-compose.development.yml start
+    ```
+
+   Restart the container.
+    ```bash
+    $ docker-compose -f docker-compose.development.yml restart
+    ```
+
+   Destroy containers, images, containers, volumes, and networks.
+    ```bash
+    $ docker-compose -f docker-compose.development.yml down
+    ```
+
 ### Building a production environment
 Recently Announced.
 
