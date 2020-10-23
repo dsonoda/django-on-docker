@@ -113,7 +113,7 @@ The host is assumed to be local.
    |Front-end file upload screen|http://localhost:1337/uploads/||
    |Admin login|http://localhost:1337/admin/login/|Enter the registered administrator's information.|
 
-5. Other commands
+5. Other commands  
    Stop the container and suspend development.
     ```bash
     $ docker-compose -f docker-compose.development.yml stop
