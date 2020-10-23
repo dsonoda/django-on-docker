@@ -1,0 +1,54 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.development
+    command: gunicorn app.wsgi:application --bind 0.0.0.0:8000
+    working_dir: /usr/src/app/
+    volumes:
+      - ./app:/usr/src/app
+      - static_volume:/usr/src/app/staticfiles
+      - media_volume:/usr/src/app/mediafiles
+    expose:
+      - 8000
+    env_file:
+      - ./.env.development
+    depends_on:
+      - db
+    networks:
+      - front
+      - back
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.development
+    networks:
+      - back
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.development
+    volumes:
+      - static_volume:/usr/src/app/staticfiles
+      - media_volume:/usr/src/app/mediafiles
+    ports:
+      - 1337:80
+    depends_on:
+      - app
+    networks:
+      - front
+
+volumes:
+  db_data:
+  static_volume:
+  media_volume:
+
+networks:
+  front:
+    external: false
+  back:
+    external: false
