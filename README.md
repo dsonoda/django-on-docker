@@ -94,7 +94,6 @@ The host is assumed to be local.
 
     ```bash
     $ docker-compose -f docker-compose.development.yml exec app python manage.py collectstatic --no-input --clear
-    $ docker-compose -f docker-compose.development.yml exec app python manage.py createsuperuser
     ```
 
    Registering an administrative user.
