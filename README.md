@@ -113,7 +113,7 @@ The host is assumed to be local.
    |Front-end file upload screen|http://localhost:1337/uploads/||
    |Admin login|http://localhost:1337/admin/login/|Enter the registered administrator's information.|
 
-5. Supplement  
+5. Other commands
    Stop the container and suspend development.
     ```bash
     $ docker-compose -f docker-compose.development.yml stop
@@ -132,6 +132,11 @@ The host is assumed to be local.
    Destroy images, containers, volumes, and networks.
     ```bash
     $ docker-compose -f docker-compose.development.yml down
+    ```
+
+   If you want to modify only the app code and check the result, restart the app container only.
+    ```bash
+    $ docker container restart django-on-docker_app_1
     ```
 
 ## Building a production environment
