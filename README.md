@@ -101,9 +101,9 @@ The host is assumed to be local.
 
     ```bash
     $ docker-compose -f docker-compose.development.yml exec app python manage.py createsuperuser
-    Username (leave blank to use 'app'): admin
-    Email address: admin@mail.com
-    Password:
+    Username (leave blank to use 'app'): [admin user name]
+    Email address: [admin user email]
+    Password: [admin user password]
     Password (again):
     Superuser created successfully.
     ```
