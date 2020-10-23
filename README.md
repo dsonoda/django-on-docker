@@ -73,7 +73,7 @@ The host is assumed to be local.
     django-on-docker_nginx_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:1337->80/tcp
     ```
 3. Initialization  
-   All data deleted.Remove data from all tables except for some, such as migration management.  
+   All data deleted. Remove data from all tables except for some, such as migration management.  
     ```bash
     $ docker-compose -f docker-compose.development.yml exec app python manage.py flush --no-input
     ```
