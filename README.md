@@ -111,7 +111,7 @@ The host is assumed to be local.
 4. Access pages.
    |page|url|note|
    |:---|:---|:---|
-   |Front-end file upload screen|http://localhost:1337/uploads/||
+   |Front-end file upload page|http://localhost:1337/uploads/||
    |Admin login|http://localhost:1337/admin/login/|Enter the registered administrator's information.|
 
 5. Other commands  
