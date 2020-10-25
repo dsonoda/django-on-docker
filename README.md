@@ -108,7 +108,8 @@ The host is assumed to be local.
     Superuser created successfully.
     ```
 
-4. Access pages.
+4. Access pages
+
    |page|url|note|
    |:---|:---|:---|
    |Front-end file upload page|http://localhost:1337/uploads/||
