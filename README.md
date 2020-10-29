@@ -7,41 +7,6 @@ This is an sample of building a Django environment on Docker using Nginx, Gunico
 ## Git clone
 ```bash
 $ git clone git@github.com:dsonoda/django-on-docker.git
-$ tree
-.
-└── django-on-docker
-    ├── LICENSE
-    ├── README.md
-    ├── .env.development
-    ├── app
-    │   ├── Dockerfile.development
-    │   ├── Pipfile
-    │   ├── Pipfile.lock
-    │   ├── app
-    │   │   ├── __init__.py
-    │   │   ├── asgi.py
-    │   │   ├── settings.py
-    │   │   ├── urls.py
-    │   │   └── wsgi.py
-    │   ├── entrypoint.development.sh
-    │   ├── manage.py
-    │   ├── mediafiles
-    │   ├── staticfiles
-    │   └── uploads
-    │       ├── __init__.py
-    │       ├── admin.py
-    │       ├── apps.py
-    │       ├── migrations
-    │       │   └── __init__.py
-    │       ├── models.py
-    │       ├── templates
-    │       │   └── upload.html
-    │       ├── tests.py
-    │       └── views.py
-    ├── docker-compose.development.yml
-    └── nginx
-        ├── Dockerfile.development
-        └── nginx.development.conf
 ```
 
 ## Building a development environment
@@ -50,13 +15,13 @@ $ tree
 Use docker-compose to set up a service-specific container on a single host to build a Django web application development environment.  
 The host is assumed to be local.  
 
-1. Edit ```.env.development``` and set the environment variables
+### 1. Edit ```.env.development``` and set the environment variables
     ```.env
     SECRET_KEY=[django secret key value]
     DB_PASSWORD=[db password]
     POSTGRES_PASSWORD=[db user password]
     ```
-2. Launch the containers
+### 2. Launch the containers
     ```bash
     $ cd django-on-docker
     $ docker-compose -f docker-compose.development.yml up -d --build
@@ -72,7 +37,7 @@ The host is assumed to be local.
     django-on-docker_db_1      docker-entrypoint.sh postgres    Up      5432/tcp
     django-on-docker_nginx_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:1337->80/tcp
     ```
-3. Initialization  
+### 3. Initialization  
    All data deleted.  
    Remove data from all tables except for some, such as migration management.  
     ```bash
@@ -108,14 +73,14 @@ The host is assumed to be local.
     Superuser created successfully.
     ```
 
-4. Access pages
+### 4. Access pages
 
    |page|url|note|
    |:---|:---|:---|
    |Front-end file upload page|http://localhost:1337/uploads/|Try file upload.|
    |Admin login|http://localhost:1337/admin/login/|Enter the registered administrator's information.|
 
-5. Other commands  
+### 5. Other commands  
    Stop the container and suspend development.
     ```bash
     $ docker-compose -f docker-compose.development.yml stop
