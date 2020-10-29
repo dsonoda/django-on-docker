@@ -4,12 +4,14 @@ This is an sample of building a Django environment on Docker using Nginx, Gunico
 
 # Usage
 
-## Git clone
+## Git clone  
+
 ```bash
 $ git clone git@github.com:dsonoda/django-on-docker.git
 ```
 
-## Building a development environment
+## Building a development environment  
+
 ![](https://github.com/dsonoda/django-on-docker/blob/images/django_on_docker_development.png)
 
 Use docker-compose to set up a service-specific container on a single host to build a Django web application development environment.  
