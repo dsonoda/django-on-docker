@@ -15,105 +15,118 @@ $ git clone git@github.com:dsonoda/django-on-docker.git
 Use docker-compose to set up a service-specific container on a single host to build a Django web application development environment.  
 The host is assumed to be local.  
 
-### 1. Edit ```.env.development``` and set the environment variables
-    ```.env
-    SECRET_KEY=[django secret key value]
-    DB_PASSWORD=[db password]
-    POSTGRES_PASSWORD=[db user password]
-    ```
-### 2. Launch the containers
-    ```bash
-    $ cd django-on-docker
-    $ docker-compose -f docker-compose.development.yml up -d --build
-    ...
-    Creating django-on-docker_db_1 ... done
-    Creating django-on-docker_app_1 ... done
-    Creating django-on-docker_nginx_1 ... done
+### 1. Edit ```.env.development``` and set the environment variables  
 
-    $ docker-compose -f docker-compose.development.yml ps -a
-            Name                        Command               State          Ports
-    ----------------------------------------------------------------------------------------
-    django-on-docker_app_1     /usr/src/app/entrypoint.de ...   Up      8000/tcp
-    django-on-docker_db_1      docker-entrypoint.sh postgres    Up      5432/tcp
-    django-on-docker_nginx_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:1337->80/tcp
-    ```
+```.env
+SECRET_KEY=[django secret key value]
+DB_PASSWORD=[db password]
+POSTGRES_PASSWORD=[db user password]
+```
+
+### 2. Launch the containers  
+
+```bash
+$ cd django-on-docker
+$ docker-compose -f docker-compose.development.yml up -d --build
+...
+Creating django-on-docker_db_1 ... done
+Creating django-on-docker_app_1 ... done
+Creating django-on-docker_nginx_1 ... done
+
+$ docker-compose -f docker-compose.development.yml ps -a
+        Name                        Command               State          Ports
+----------------------------------------------------------------------------------------
+django-on-docker_app_1     /usr/src/app/entrypoint.de ...   Up      8000/tcp
+django-on-docker_db_1      docker-entrypoint.sh postgres    Up      5432/tcp
+django-on-docker_nginx_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:1337->80/tcp
+```
+
 ### 3. Initialization  
-   All data deleted.  
-   Remove data from all tables except for some, such as migration management.  
-    ```bash
-    $ docker-compose -f docker-compose.development.yml exec app python manage.py flush --no-input
-    ```
 
-   Generating a migration files.  
-   If a model modification occurs in subsequent development, it must be run again.  
-    ```bash
-    $ docker-compose -f docker-compose.development.yml exec app python manage.py makemigrations
-    ```
+All data deleted.  
+Remove data from all tables except for some, such as migration management.  
 
-   Create DB tables from the generated migration files.  
-   If a model modification occurs in subsequent development, it must be run again.  
-    ```bash
-    $ docker-compose -f docker-compose.development.yml exec app python manage.py migrate
-    ```
+```bash
+$ docker-compose -f docker-compose.development.yml exec app python manage.py flush --no-input
+```
 
-   Move the static files into the static directory.
+Generating a migration files.  
+If a model modification occurs in subsequent development, it must be run again.  
 
-    ```bash
-    $ docker-compose -f docker-compose.development.yml exec app python manage.py collectstatic --no-input --clear
-    ```
+```bash
+$ docker-compose -f docker-compose.development.yml exec app python manage.py makemigrations
+```
 
-   Registering an administrative user.
+Create DB tables from the generated migration files.  
+If a model modification occurs in subsequent development, it must be run again.  
 
-    ```bash
-    $ docker-compose -f docker-compose.development.yml exec app python manage.py createsuperuser
-    Username (leave blank to use 'app'): [admin user name]
-    Email address: [admin user email]
-    Password: [admin user password]
-    Password (again):
-    Superuser created successfully.
-    ```
+```bash
+$ docker-compose -f docker-compose.development.yml exec app python manage.py migrate
+```
 
-### 4. Access pages
+Move the static files into the static directory.  
 
-   |page|url|note|
-   |:---|:---|:---|
-   |Front-end file upload page|http://localhost:1337/uploads/|Try file upload.|
-   |Admin login|http://localhost:1337/admin/login/|Enter the registered administrator's information.|
+```bash
+$ docker-compose -f docker-compose.development.yml exec app python manage.py collectstatic --no-input --clear
+```
+
+Registering an administrative user.  
+
+```bash
+$ docker-compose -f docker-compose.development.yml exec app python manage.py createsuperuser
+Username (leave blank to use 'app'): [admin user name]
+Email address: [admin user email]
+Password: [admin user password]
+Password (again):
+Superuser created successfully.
+```
+
+### 4. Access pages  
+
+|page|url|note|
+|:---|:---|:---|
+|Front-end file upload page|http://localhost:1337/uploads/|Try file upload.|
+|Admin login|http://localhost:1337/admin/login/|Enter the registered administrator's information.|
 
 ### 5. Other commands  
-   Stop the container and suspend development.
-    ```bash
-    $ docker-compose -f docker-compose.development.yml stop
-    ```
+Stop the container and suspend development.  
 
-   Start the container and resume development.
-    ```bash
-    $ docker-compose -f docker-compose.development.yml start
-    ```
+```bash
+$ docker-compose -f docker-compose.development.yml stop
+```
 
-   Restart the container.
-    ```bash
-    $ docker-compose -f docker-compose.development.yml restart
-    ```
+Start the container and resume development.  
 
-   Destroy images, containers, volumes, and networks.
-    ```bash
-    $ docker-compose -f docker-compose.development.yml down
-    ```
+```bash
+$ docker-compose -f docker-compose.development.yml start
+```
 
-   If you want to modify only the app code and check the result, restart the app container only.
-    ```bash
-    $ docker container restart django-on-docker_app_1
-    ```
+Restart the container.  
 
-## Building a production environment
-Recently Announced.
+```bash
+$ docker-compose -f docker-compose.development.yml restart
+```
 
-# Author
+Destroy images, containers, volumes, and networks.  
 
-- Daisuke Sonoda
-- mail@daisukesonoda.com
+```bash
+$ docker-compose -f docker-compose.development.yml down
+```
 
-# License
+If you want to modify only the app code and check the result, restart the app container only.  
 
-This repository is under [MIT license](https://github.com/dsonoda/django-on-docker/blob/main/LICENSE).
+```bash
+$ docker container restart django-on-docker_app_1
+```
+
+## Building a production environment  
+Recently Announced.  
+
+# Author  
+
+- Daisuke Sonoda  
+- mail@daisukesonoda.com  
+
+# License  
+
+This repository is under [MIT license](https://github.com/dsonoda/django-on-docker/blob/main/LICENSE).  
