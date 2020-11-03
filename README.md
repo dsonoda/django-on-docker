@@ -17,7 +17,7 @@ $ git clone git@github.com:dsonoda/django-on-docker.git
 Use docker-compose to set up a service-specific container on a single host to build a Django web application development environment.  
 The host is assumed to be local.  
 
-### 1. Edit ```.env.development``` and set the environment variables  
+#### 1. Edit ```.env.development``` and set the environment variables  
 
 ```.env
 SECRET_KEY=[django secret key value]
@@ -25,7 +25,7 @@ DB_PASSWORD=[db password]
 POSTGRES_PASSWORD=[db user password]
 ```
 
-### 2. Launch the containers  
+#### 2. Launch the containers  
 
 ```bash
 $ cd django-on-docker
@@ -43,7 +43,7 @@ django-on-docker_db_1      docker-entrypoint.sh postgres    Up      5432/tcp
 django-on-docker_nginx_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:1337->80/tcp
 ```
 
-### 3. Initialization  
+#### 3. Initialization  
 
 All data deleted.  
 Remove data from all tables except for some, such as migration management.  
@@ -83,14 +83,14 @@ Password (again):
 Superuser created successfully.
 ```
 
-### 4. Access pages  
+#### 4. Access pages  
 
 |page|url|note|
 |:---|:---|:---|
 |Frontend file upload page|http://localhost:1337/uploads/|Try file upload.|
 |Admin login|http://localhost:1337/admin/login/|Enter the registered administrator's information.|
 
-### 5. Other commands  
+#### 5. Other commands  
 Stop the container and suspend development.  
 
 ```bash
