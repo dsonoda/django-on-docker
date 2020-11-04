@@ -14,7 +14,7 @@ $ git clone git@github.com:dsonoda/django-on-docker.git
 
 #### Goal  
 
-Use docker-compose to set up a service-specific container on a single host to build a Django web application development environment.The host is assumed to be in a local environment.  
+Use docker-compose to set up a service-specific container on a single host to build a Django web application development environment. The host is assumed to be in a local environment.  
 
 ![](https://github.com/dsonoda/django-on-docker/blob/images/django_on_docker_development.png)  
 
