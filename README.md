@@ -12,10 +12,12 @@ $ git clone git@github.com:dsonoda/django-on-docker.git
 
 ## Building a development environment  
 
-![](https://github.com/dsonoda/django-on-docker/blob/images/django_on_docker_development.png)
+#### Goal  
 
 Use docker-compose to set up a service-specific container on a single host to build a Django web application development environment.  
 The host is assumed to be local.  
+
+![](https://github.com/dsonoda/django-on-docker/blob/images/django_on_docker_development.png)  
 
 #### 1. Edit ```.env.development``` and set the environment variables  
 
